@@ -5,21 +5,21 @@ type SEX string
 const (
 	Undefined SEX = SEX(iota)
 	Male
-	Femalte
+	Female
 )
 
 type UserRequest struct {
-	Name          string
-	Age           int
-	Gender        SEX
-	MovieCategory string
+	Name          string `json:"name"`
+	Age           int    `json:"age"`
+	Gender        SEX    `json:"gender"`
+	MovieCategory string `json:"movieCategory"`
 }
 
 type UserMovieResponse struct {
-	MovieImage    string
-	MovieTitle    string
-	MovieDuration string
-	MovieRating   uint
+	Title  string
+	Poster string
+	Year   string
+	Type   string
 }
 
 type DeviceRequest struct {
