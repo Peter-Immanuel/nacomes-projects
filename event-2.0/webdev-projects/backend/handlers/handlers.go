@@ -31,15 +31,6 @@ func GetRecommendation(c *gin.Context) {
 	// Function to get movies from api endpoint
 	getMovies(userRequest.MovieCategory, c, &movieResponse)
 
-	// serialize json output
-	//result, err := json.Marshal(movieResponse)
-	//
-	//// Handle error
-	//if err != nil {
-	//	c.JSON(http.StatusNotFound, gin.H{
-	//		"message": "Sorry we couldn't get your recommendation, try again later",
-	//	})
-	//}
 	c.JSON(http.StatusOK, movieResponse)
 }
 
