@@ -19,5 +19,6 @@ func main() {
 	router.Use(cors.Default())
 	router.GET("/", handlers.APIHealth)
 	router.POST("/recommendation", handlers.GetRecommendation)
+	router.POST("/intruder", handlers.IntruderAlertHandler)
 	router.Run()
 }

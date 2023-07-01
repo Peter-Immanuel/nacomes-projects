@@ -23,7 +23,14 @@ type UserMovieResponse struct {
 }
 
 type DeviceRequest struct {
-	ID       string
-	Location string
-	DateTime string
+	DeviceID string `json:"deviceID"`
+	Location string `json:"location"`
+	DateTime string `json:"dateTime"`
+}
+
+func (dr *DeviceRequest) Validate() bool {
+	if dr.DeviceID == "" || dr.Location == "" || dr.DateTime == "" {
+		return false
+	}
+	return true
 }
