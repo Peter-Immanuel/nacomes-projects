@@ -71,3 +71,25 @@ func getMovies(search string, c *gin.Context, response *map[string]any) {
 	json.Unmarshal(body, response)
 	return
 }
+
+func IntruderAlertHandler(c *gin.Context) {
+	var deviceRequest models.DeviceRequest
+
+	if err := c.ShouldBindJSON(&deviceRequest); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	if !deviceRequest.Validate() {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Invalid Response",
+		})
+		return
+	}
+
+	// make a web push with the gotten response
+
+	c.JSON(http.StatusOK, deviceRequest)
+}
